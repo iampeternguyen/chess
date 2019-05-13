@@ -10,23 +10,14 @@ class Display
   end
 
   def render
-    system("clear")
-
+    system('clear')
     8.times do |row|
       8.times do |col|
         pos = [row, col]
         if pos == @cursor.cursor_pos
-          if @board[*pos]
-            print (@board[*pos].to_s + " ").colorize({:color => :black, :background => :blue})
-          else
-            print "  ".colorize({:color => :black, :background => :blue})
-          end
+          print (@board[*pos].to_s).colorize({:color => :black, :background => :blue})
         else
-          if @board[*pos]
-            print (@board[*pos].to_s + " ")
-          else
-            print "  "
-          end
+          print @board[*pos].to_s
         end
       end
       print "\n"

@@ -11,9 +11,15 @@ class Board
     (0...8).each do |col|
       @grid[0][col] = Piece.new
       @grid[1][col] = Piece.new
+      @grid[2][col] = NullPiece.new
+      @grid[3][col] = NullPiece.new
+      @grid[4][col] = NullPiece.new
+      @grid[5][col] = NullPiece.new
       @grid[6][col] = Piece.new
       @grid[7][col] = Piece.new
     end
+
+
   end
 
   def [](row, col)
