@@ -9,19 +9,33 @@ class Display
     @cursor = Cursor.new([0,0], @board)
   end
 
+  def build_grid
+    @board.grid.map.with_index do |row, i|
+      build_row(row, i)
+    end
+
+  end
+
+  def build_row(row, i)
+    row.map.with_index do |piece, j|
+      pos = [i,j]
+      if pos == @cursor_pos && @cursor.selected
+        piece.to_s.colorize({:color => :black, :background => :green})
+      elsif pos == @cursor.cursor_pos
+        piece.to_s.colorize({:color => :black, :background => :blue})
+      else
+        piece.to_s
+      end
+    end
+  end
+
+
   def render
     system('clear')
-    8.times do |row|
-      8.times do |col|
-        pos = [row, col]
-        if pos == @cursor.cursor_pos
-          print (@board[*pos].to_s).colorize({:color => :black, :background => :blue})
-        else
-          print @board[*pos].to_s
-        end
-      end
-      print "\n"
+    build_grid.each do |row|
+      puts row.join
     end
+
   end
 end
 

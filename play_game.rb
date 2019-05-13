@@ -11,7 +11,8 @@ class Chess
   def play
     until @game_over
       @display.render
-      @display.cursor.get_input
+      input = @display.cursor.get_input
+
     end
   end
 

@@ -32,16 +32,17 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board, :selected
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
+    @selected = false
   end
 
   def get_input
     key = KEYMAP[read_char]
-    handle_key(key)
+    return handle_key(key)
   end
 
   private
@@ -76,13 +77,24 @@ class Cursor
   end
 
   def handle_key(key)
-    Process.exit if key == :ctrl_c
-    next_pos = [@cursor_pos, MOVES[key]].transpose.map {|x| x.reduce(:+)}
-    if next_pos.all? {|pos| pos.between?(0,7)}
-      @cursor_pos = next_pos
+
+    case key
+    when :ctrl_c
+      Process.exit
+    when :space, :return
+      @selected = !@selected
+      @cursor_pos
+    when :left, :right, :up, :down
+      update_pos(MOVES[key])
     end
   end
 
   def update_pos(diff)
+    next_pos = [@cursor_pos, diff].transpose.map {|x| x.reduce(:+)}
+    @cursor_pos = next_pos if valid_pos(next_pos)
+  end
+
+  def valid_pos(next_pos)
+    next_pos.all? {|pos| pos.between?(0,7)}
   end
 end
