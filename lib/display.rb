@@ -23,8 +23,10 @@ class Display
         piece.to_s.colorize({:color => :black, :background => :green})
       elsif pos == @cursor.cursor_pos
         piece.to_s.colorize({:color => :black, :background => :blue})
-      else
-        piece.to_s
+      elsif (i+j).odd?
+        piece.to_s.colorize({:color => :black, :background => :white})
+      elsif (i+j).even?
+        piece.to_s.colorize({:color => :white, :background => :black})
       end
     end
   end
