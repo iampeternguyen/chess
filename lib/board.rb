@@ -34,10 +34,3 @@ class Board
     end
   end
 end
-
-game = Board.new
-p game[0,0]
-p game[2,3]
-game.move_piece([0,0], [1,3])
-p game[0,0]
-p game[2,3]
