@@ -31,11 +31,15 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    if self[*start_pos].is_a?(Piece) && self[*end_pos].nil?
+    if !self[*start_pos].empty? && self[*end_pos].empty?
+      # swap position values
+      self[*start_pos].pos, self[*end_pos].pos = end_pos, start_pos
+      #  swap positions
       self[*start_pos], self[*end_pos] = self[*end_pos], self[*start_pos]
-    elsif !self[*start_pos].is_a?(Piece)
+
+    elsif self[*start_pos].empty?
       raise ArgumentError, "There is no chess piece at #{start_pos}"
-    elsif self[*end_pos]
+    elsif self[*end_pos].empty?
       raise ArgumentError, "Ending position #{end_pos} is not empty"
     end
   end

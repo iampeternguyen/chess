@@ -86,6 +86,7 @@ class Cursor
       @cursor_pos
     when :left, :right, :up, :down
       update_pos(MOVES[key])
+      nil
     end
   end
 
