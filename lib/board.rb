@@ -39,7 +39,7 @@ class Board
 
     elsif self[*start_pos].empty?
       raise ArgumentError, "There is no chess piece at #{start_pos}"
-    elsif self[*end_pos].empty?
+    elsif !self[*end_pos].empty?
       raise ArgumentError, "Ending position #{end_pos} is not empty"
     end
   end
