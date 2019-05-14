@@ -26,5 +26,7 @@ class Piece
     raise NotImplementedError
   end
 
+
+
 end
 
