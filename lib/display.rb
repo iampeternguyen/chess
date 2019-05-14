@@ -20,13 +20,13 @@ class Display
     row.map.with_index do |piece, j|
       pos = [i,j]
       if pos == @cursor.cursor_pos && @cursor.selected
-        piece.to_s.colorize({:color => :black, :background => :green})
+        piece.to_s.colorize({:background => :green})
       elsif pos == @cursor.cursor_pos
-        piece.to_s.colorize({:color => :black, :background => :blue})
+        piece.to_s.uncolorize.colorize({:background => :yellow})
       elsif (i+j).odd?
-        piece.to_s.colorize({:color => :black, :background => :white})
+        piece.to_s.colorize({:background => :blue})
       elsif (i+j).even?
-        piece.to_s.colorize({:color => :white, :background => :black})
+        piece.to_s.colorize({:background => :red})
       end
     end
   end

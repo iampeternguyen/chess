@@ -9,8 +9,8 @@ class Board
 
   def setup
     (0...8).each do |col|
-      @grid[0][col] = Knight.new(:white, self, [0,0])
-      @grid[1][col] = Knight.new(:white, self, [0,0])
+      @grid[0][col] = Knight.new(:black, self, [0,0])
+      @grid[1][col] = Knight.new(:black, self, [0,0])
       @grid[2][col] = NullPiece.new(:white, self, [0,0])
       @grid[3][col] = NullPiece.new(:white, self, [0,0])
       @grid[4][col] = NullPiece.new(:white, self, [0,0])
