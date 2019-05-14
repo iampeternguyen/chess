@@ -1,10 +1,21 @@
 module Slideable
   def moves
     valid_moves = []
+    straight_moves = [[1,0],[0,1],[-1,0],[0,-1]]
+    diagonal_moves = [[1,1],[1,-1],[-1,1],[-1,-1]]
 
     case move_dir
     when :straight
-      moves = [[1,0],[0,1],[-1,0],[0,-1]]
+
+      straight_moves.each do |delta|
+        valid_moves += get_available_spaces(delta)
+      end
+    when :diagonal
+      diagonal_moves.each do |delta|
+        valid_moves += get_available_spaces(delta)
+      end
+    when :queen
+      moves = straight_moves + diagonal_moves
       moves.each do |delta|
         valid_moves += get_available_spaces(delta)
       end

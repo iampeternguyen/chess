@@ -1,11 +1,11 @@
 require_relative 'piece'
 
 class NullPiece < Piece
-
   def initialize
   end
+
   def to_s
-    " x "
+    "   "
   end
 
   def empty?
@@ -15,4 +15,5 @@ class NullPiece < Piece
   def inspect
     "nullpiece"
   end
+
 end
