@@ -9,14 +9,14 @@ class Board
 
   def setup
     (0...8).each do |col|
-      @grid[0][col] = Piece.new
-      @grid[1][col] = Piece.new
-      @grid[2][col] = NullPiece.new
-      @grid[3][col] = NullPiece.new
-      @grid[4][col] = NullPiece.new
-      @grid[5][col] = NullPiece.new
-      @grid[6][col] = Piece.new
-      @grid[7][col] = Piece.new
+      @grid[0][col] = Knight.new(:white, self, [0,0])
+      @grid[1][col] = Knight.new(:white, self, [0,0])
+      @grid[2][col] = NullPiece.new(:white, self, [0,0])
+      @grid[3][col] = NullPiece.new(:white, self, [0,0])
+      @grid[4][col] = NullPiece.new(:white, self, [0,0])
+      @grid[5][col] = NullPiece.new(:white, self, [0,0])
+      @grid[6][col] = Knight.new(:white, self, [0,0])
+      @grid[7][col] = Knight.new(:white, self, [0,0])
     end
 
 
