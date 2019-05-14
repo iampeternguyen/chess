@@ -11,14 +11,13 @@ class Board
     (0...8).each do |col|
       @grid[0][col] = Knight.new(:black, self, [0,col])
       @grid[1][col] = Queen.new(:black, self, [1,col])
-      @grid[2][col] = NullPiece.new
-      @grid[3][col] = NullPiece.new
-      @grid[4][col] = NullPiece.new
-      @grid[5][col] = NullPiece.new
+      @grid[2][col] = NullPiece.instance
+      @grid[3][col] = NullPiece.instance
+      @grid[4][col] = NullPiece.instance
+      @grid[5][col] = NullPiece.instance
       @grid[6][col] = Bishop.new(:white, self, [6,col])
       @grid[7][col] = Knight.new(:white, self, [7,col])
     end
-
 
   end
 
