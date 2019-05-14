@@ -22,4 +22,8 @@ class Knight < Piece
     ]
   end
 
+  def name
+    "knight"
+  end
+
 end

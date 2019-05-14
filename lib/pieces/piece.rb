@@ -14,7 +14,8 @@ class Piece
     false
   end
 
-  def valid_moves(pos)
+  def valid_move?(pos)
+    return pos.all? { |coord| coord.between?(0, 7) } && @board[*pos].empty?
   end
 
   def pos=(val)
@@ -24,6 +25,10 @@ class Piece
   def symbol
     # subclass implements this with unicode chess char
     raise NotImplementedError
+  end
+
+  def inspect
+    "#{self.name} at #{@pos}"
   end
 
 
