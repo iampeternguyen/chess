@@ -15,7 +15,7 @@ class Piece
   end
 
   def valid_move?(pos)
-    return pos.all? { |coord| coord.between?(0, 7) } && @board[*pos].empty?
+    return pos.all? { |coord| coord.between?(0, 7) } && board[*pos].color != @color
   end
 
   def pos=(val)

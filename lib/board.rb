@@ -57,8 +57,11 @@ class Board
         self[*start_pos], self[*end_pos] = self[*end_pos], self[*start_pos]
     elsif self[*start_pos].empty?
       raise ArgumentError, "There is no chess piece at #{start_pos}"
-    elsif !self[*end_pos].empty?
+    elsif !self[*end_pos].empty? && self[*end_pos].color == self[*start_pos].color
       raise ArgumentError, "Ending position #{end_pos} is not empty"
-    end
+    elsif !self[*end_pos].empty? && self[*end_pos].color != self[*start_pos].color
+      self[*start_pos].pos = end_pos
+      #  swap positions of pieces on board
+      self[*start_pos], self[*end_pos] = self[*end_pos], self[*start_pos]    end
   end
 end

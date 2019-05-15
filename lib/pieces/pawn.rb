@@ -11,11 +11,25 @@ class Pawn < Piece
   end
 
   def moves
-    forward_steps #+ side_attacks
+    p forward_steps + side_attacks
   end
 
   def at_start_pos?
-    @pos[0] == (@color == :white) ? 6 : 1
+    start_pos = (@color == :white) ? 6 : 1
+    @pos[0] == start_pos
+  end
+
+  def side_attacks
+    possible_moves = []
+    row, col = @pos
+    dy = (@color == :white) ? -1 : 1
+    row += dy
+    [-1, 1].each do |dx|
+      if !@board[row, col].empty? && @board[row,col + dx].color != @color
+        possible_moves << [row,col + dx]
+      end
+    end
+    possible_moves.select {|pos| valid_move?(pos)}
   end
 
   def forward_steps
@@ -38,6 +52,6 @@ class Pawn < Piece
       end
     end
 
-    possible_moves
+    possible_moves.select {|pos| valid_move?(pos)}
   end
 end
